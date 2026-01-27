@@ -25,11 +25,13 @@ Start with providing these hash codes: MD5, SHA-1, SHA-256, SHA-512, CRC32 and C
 *
 * It created code then asked me if I wanted output option of json or csv.  I said BOTH, and it updated the code. 
 ## next steps 
+### create text cases to validate the hash results and file access 
 ### fix the build to create a single EXE output 
 ### test on Linux with .NET8 option for Linux 
 ### see what happens of .NET8 is not installed 
 ### Add some other hash routines 
 ### create an option to text existing hash with a file 
+
 
 
 
