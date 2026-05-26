@@ -22,7 +22,7 @@ namespace HashIt
             bool csv = false;
 
             // Simple manual argument parsing
-            for (int i = 0; i < args.Length; i++)
+            for (int i = 0; i < args.Length; i++ )
             {
                 var arg = args[i];
 

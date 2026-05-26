@@ -24,6 +24,73 @@ The resulting EXE should be a single EXE without expect extra DLLs.
 Start with providing these hash codes: MD5, SHA-1, SHA-256, SHA-512, CRC32 and CRC64
 *
 * It created code then asked me if I wanted output option of json or csv.  I said BOTH, and it updated the code. 
+<<<<<<< Updated upstream
+=======
+
+### (2) CoPilot Pro inside of Visual Studio 
+* 30 minutes trying find a way to create a .NET 8 with VS 2022 community 
+* Failed to accomplish this 
+
+
+### (3) CoPilot Pro Inside of VS Code (see hashit2 )
+* I gave it the same instructions
+* It spent 10 minutes generating code then asking me to accept their code. 
+* 1 Compiler error, which it fixed as soon as I pointed out the error. 
+* Build process is manual with dotnet commands it provided 
+* It created the, now standard, exe with a small DLL which is required. 
+* Offer extra options to decode but I asked it to add in the jason and CSV output which produced 
+* I asked for dotnet command to create a single EXE which resulted in a 73MB exe file as opposed to the 550KB exe + 20KB DLL
+*  Build command for 73MB standalone EXE: 
+> dotnet publish -c Release -r win-x64 --self-contained false -p:PublishSingleFile=true
+* build command for the exe+dll solution 
+> dotnet build
+* _or use the BAT files I just discovered_
+
+
+### (4) CharGPT (I forgot the results) 
+
+### (5) gemini 
+* I gave it the same instructions
+* Code compiled correctly first pass 
+* link process failed.  
+* I could followup on the link process but got side tracked 
+
+
+
+## Differences between CoPilot in different environments. 
+* Oddly difference code between these two versions
+For example, Option (1) (CoPilot from Edge) created this: 
+```
+    public override string ComputeHash(Stream stream)
+    {
+        using var sha = SHA256.Create();
+        var hash = sha.ComputeHash(stream);
+        return Convert.ToHexString(hash);
+    }
+```
+While option (3) produced 
+```
+    public string ComputeHash(string filePath)
+    {
+        using var sha256 = SHA256.Create();
+        using var stream = File.OpenRead(filePath);
+        var hash = sha256.ComputeHash(stream);
+        return BitConverter.ToString(hash).Replace("-", "").ToLowerInvariant();
+    }
+```
+*  Option (3), CoPilot in VVS Code also created a readme.md with instructions for building the code. 
+* Also Option (3) created BAT files to build various versions of the Of the program which I didn't even notice until I was writing this document.
+### I have to admin that Option (3) produced better results 
+
+
+
+
+
+
+
+
+
+>>>>>>> Stashed changes
 ## next steps 
 ### fix the build to create a single EXE output 
 ### test on Linux with .NET8 option for Linux 
